@@ -1,1 +1,1 @@
-# BruteForceVRecursive-Algorithms
+# BruteForce VS Recursive Algorithms
