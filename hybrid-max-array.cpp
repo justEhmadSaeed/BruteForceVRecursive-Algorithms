@@ -59,10 +59,10 @@ int main()
 
     // Code to Save array in csv file
 
-    ofstream OutData;
+    /* ofstream OutData;
     OutData.open("hybrid-max-array.csv");
     for (int i = 0; i < size; i++)
-        OutData << A[i] << endl;
+        OutData << A[i] << endl; */
 
     delete[] A;
     return 0;
@@ -71,7 +71,7 @@ int main()
 subArray HYBRID_FIND_MAX_SUBARRAY(int *A, int low, int high)
 {
     int size = high - low + 1;
-    if (size <= 30)
+    if (size <= 37)
 
         return FIND_MAX_SUBARRAY_BRUTE_FORCE(A, low, high);
 

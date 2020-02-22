@@ -26,21 +26,20 @@ void RandomArray(int array[], int size);
 int main()
 {
 
-    int size = 8;
+    int size;
     cout << "Enter the Size of Array: ";
-    //cin >> size;
-    int arr[8] = {-2, -5, 6, -2, -3, 1, 5, -6};
-    int *A = arr;
+    cin >> size;
+    int *A = new int[size];
 
     // To generate random Numbers and store them
 
     srand(time(NULL));
-    //RandomArray(A, size);
+    RandomArray(A, size);
 
     // Code to call Recursive Max Array and measure time duration
 
-    auto start = chrono::high_resolution_clock::now();
     subArray miniArr;
+    auto start = chrono::high_resolution_clock::now();
     miniArr = FIND_MAX_SUBARRAY(A, 0, size - 1);
     auto end = chrono::high_resolution_clock::now();
     double time_taken = chrono::duration_cast<chrono::nanoseconds>(end - start).count();
@@ -48,7 +47,7 @@ int main()
     // Code to calculate the time duration
 
     time_taken *= 1e-9;
-    cout << "\n\n Time taken by the Recursive max array, with " << size << " size of Array is: ";
+    cout << "\nTime taken by the Recursive max array, with " << size << " size of Array is: ";
     cout << fixed << time_taken << setprecision(9) << " seconds" << endl;
 
     // Output of the SubArray
