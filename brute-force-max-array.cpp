@@ -61,8 +61,22 @@ int main()
 }
 subArray *FIND_MAX_SUBARRAY_BRUTE_FORCE(int *A, int size)
 {
+    int low, high, sum = 0;
+    for (int i = 0; i < size; ++i)
+    {
+        for (int j = i + 1; j <= size; ++j)
+            if (A[j] - A[i] > sum)
+            {
+                sum = A[j] - A[i];
+                low = i;
+                high = j;
+            }
+    }
 
     subArray *miniArray = new subArray;
+    miniArray->max_left = low;
+    miniArray->max_right = high;
+    miniArray->max_right = sum;
     return miniArray;
 }
 
