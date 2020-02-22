@@ -19,6 +19,7 @@ struct subArray
     int sum;
 };
 
+// Prototpyes
 subArray FIND_MAX_CROSSING_SUBARRAY(int *A, int low, int mid, int high);
 subArray HYBRID_FIND_MAX_SUBARRAY(int *A, int low, int high);
 subArray FIND_MAX_SUBARRAY_BRUTE_FORCE(int *A, int low, int high);
@@ -59,18 +60,20 @@ int main()
 
     // Code to Save array in csv file
 
-    /* ofstream OutData;
+    ofstream OutData;
     OutData.open("hybrid-max-array.csv");
     for (int i = 0; i < size; i++)
-        OutData << A[i] << endl; */
+        OutData << A[i] << endl;
 
     delete[] A;
     return 0;
 }
 
+// Hybrid Max sum Subarray Function
 subArray HYBRID_FIND_MAX_SUBARRAY(int *A, int low, int high)
 {
     int size = high - low + 1;
+    // Execute Brute Force for size less than 37
     if (size <= 37)
 
         return FIND_MAX_SUBARRAY_BRUTE_FORCE(A, low, high);
@@ -98,6 +101,7 @@ subArray HYBRID_FIND_MAX_SUBARRAY(int *A, int low, int high)
     }
 }
 
+// For cross Max Sum
 subArray FIND_MAX_CROSSING_SUBARRAY(int *A, int low, int mid, int high)
 {
     int left_sum = A[mid], sum, max_left = mid;
@@ -134,10 +138,13 @@ subArray FIND_MAX_CROSSING_SUBARRAY(int *A, int low, int mid, int high)
     return miniArray;
 }
 
+// Brute Force Max Sum Array
 subArray FIND_MAX_SUBARRAY_BRUTE_FORCE(int *A, int low, int high)
 {
     int max_sum = A[low];
     int size = high - low + 1;
+
+    // if size is greater than one
     if (low != high)
     {
         for (int i = 0; i < size; ++i)
@@ -155,6 +162,8 @@ subArray FIND_MAX_SUBARRAY_BRUTE_FORCE(int *A, int low, int high)
             }
         }
     }
+
+    // Storing value in Struct
     subArray miniArray;
     miniArray.max_left = low;
     miniArray.max_right = high;

@@ -19,6 +19,7 @@ struct subArray
     int sum;
 };
 
+// Prototpyes
 subArray FIND_MAX_SUBARRAY_BRUTE_FORCE(int *A, int low, int high);
 void RandomArray(int array[], int size);
 
@@ -65,11 +66,13 @@ int main()
     return 0;
 }
 
+// Brute Force Max Sum Array
 subArray FIND_MAX_SUBARRAY_BRUTE_FORCE(int *A, int low, int high)
 {
     int max_sum = A[low];
     int size = high - low + 1;
 
+    // if size is greater than one
     if (high != low)
     {
         for (int i = 0; i < size; ++i)
@@ -87,6 +90,8 @@ subArray FIND_MAX_SUBARRAY_BRUTE_FORCE(int *A, int low, int high)
             }
         }
     }
+
+    // Storing value in Struct
     subArray miniArray;
     miniArray.max_left = low;
     miniArray.max_right = high;

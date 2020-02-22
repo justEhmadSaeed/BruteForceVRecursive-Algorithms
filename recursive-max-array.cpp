@@ -18,7 +18,7 @@ struct subArray
     int max_right;
     int sum;
 };
-
+// Prototpyes
 subArray FIND_MAX_CROSSING_SUBARRAY(int *A, int low, int mid, int high);
 subArray FIND_MAX_SUBARRAY(int *A, int low, int high);
 void RandomArray(int array[], int size);
@@ -66,9 +66,10 @@ int main()
     delete[] A;
     return 0;
 }
-
+//  Recursive Max Sum Subarray
 subArray FIND_MAX_SUBARRAY(int *A, int low, int high)
 {
+    // if array has only one element
     if (high == low)
     {
         subArray miniArray;
@@ -91,7 +92,6 @@ subArray FIND_MAX_SUBARRAY(int *A, int low, int high)
 
         crossArray = FIND_MAX_CROSSING_SUBARRAY(A, low, mid, high);
 
-
         if (leftArray.sum >= rightArray.sum && leftArray.sum >= crossArray.sum)
             return leftArray;
         else if (rightArray.sum >= leftArray.sum && rightArray.sum >= crossArray.sum)
@@ -101,6 +101,7 @@ subArray FIND_MAX_SUBARRAY(int *A, int low, int high)
     }
 }
 
+// For cross Max Sum
 subArray FIND_MAX_CROSSING_SUBARRAY(int *A, int low, int mid, int high)
 {
     int left_sum = A[mid], sum, max_left = mid;
@@ -116,6 +117,7 @@ subArray FIND_MAX_CROSSING_SUBARRAY(int *A, int low, int mid, int high)
             max_left = i;
         }
     }
+
     sum = A[mid + 1];
     int max_right = mid + 1, right_sum = A[mid + 1];
 
@@ -129,6 +131,7 @@ subArray FIND_MAX_CROSSING_SUBARRAY(int *A, int low, int mid, int high)
         }
     }
 
+    // Storing value in Struct
     subArray miniArray;
     miniArray.max_left = max_left;
     miniArray.max_right = max_right;
